@@ -1,0 +1,68 @@
+public class Student_marksheet {
+    public class Marksheet{
+        public String studentName;
+        public Integer rollNumber;
+        public Map<String,Integer> SubjectMarks;
+        public Integer totalMarks;
+        public Decimal percentage;
+        
+        public Marksheet(String name, Integer roll)
+        {
+            studentName = name;
+            rollNumber = roll;
+            subjectMarks = new Map<String,Integer>();
+		}
+        
+        //Methods to add marks for a subject
+        public void addMarks(String subject,Integer marks)
+        {
+            subjectMarks.put(subject,marks);
+        }
+        
+        //Methods to calculate total marks and percentage
+        public void calculateTotalAndPercentage()
+        {
+            totalMarks = 0;
+            for(Integer marks: subjectMarks.values())
+            {
+                totalMarks += marks;
+            }
+            percentage = (Decimal)totalMarks/(subjectMarks.size()*100)*100;
+        }
+        
+        //Method to print marksheet
+        public void printMarksheet()
+        {
+            System.debug('Student Name:- '+studentName);
+			System.debug('Roll Number:- '+rollNumber);
+            System.debug('-------------------------');
+            for(String subject : subjectMarks.keySet())
+            {
+                System.debug(subject+':'+subjectMarks.get(subject));
+            }
+            System.debug('--------------------------');
+            System.debug('--------------------------------');
+            System.debug('Total Marks: ' + totalMarks);
+            System.debug('Percentage: ' + percentage + '%');
+
+        }
+    }
+    
+    public static void main()
+    {
+        //Create a marksheet object for a student
+        Student_marksheet sm = new Student_marksheet();
+        Marksheet marksheet = new Marksheet('John Doe',101);
+        
+        //Add Marks for different subjects
+        marksheet.addMarks('Maths',90);
+        marksheet.addMarks('Science',85);
+        marksheet.addMarks('English',80);
+        marksheet.addMarks('History',75);
+        
+        marksheet.calculateTotalAndPercentage();
+        
+        //Print marksheet
+        marksheet.printMarksheet();
+    }
+}
