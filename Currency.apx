@@ -1,0 +1,43 @@
+public class CurrencyConverter {
+
+    public static Decimal convertCurrency(Decimal amount, String fromCurrency, String toCurrency) {
+    
+        Map<String, Decimal> exchangeRates = new Map<String, Decimal>{
+            'USD-EUR' => 0.85, // 1 USD = 0.85 EUR
+            'USD-GBP' => 0.72, // 1 USD = 0.72 GBP
+            'USD-INR' => 75.00, // 1 USD = 75.00 INR
+            'EUR-USD' => 1.18, // 1 EUR = 1.18 USD
+            'EUR-GBP' => 0.85, // 1 EUR = 0.85 GBP
+            'EUR-INR' => 88.00, // 1 EUR = 88.00 INR
+            'GBP-USD' => 1.39, // 1 GBP = 1.39 USD
+            'GBP-EUR' => 1.18, // 1 GBP = 1.18 EUR
+            'GBP-INR' => 94.00, // 1 GBP = 94.00 INR
+            'INR-USD' => 0.013, // 1 INR = 0.013 USD
+            'INR-EUR' => 0.011, // 1 INR = 0.011 EUR
+            'INR-GBP' => 0.011  // 1 INR = 0.011 GBP
+        };
+
+        String exchangeKey = fromCurrency + '-' + toCurrency;
+        if (exchangeRates.containsKey(exchangeKey)) {
+            // Perform currency conversion
+            Decimal exchangeRate = exchangeRates.get(exchangeKey);
+            Decimal convertedAmount = amount * exchangeRate;
+            return convertedAmount;
+        } else {
+            System.debug('Conversion rates not available for the selected currencies.');
+            return null;
+        }
+    }
+
+    public static void main(String[] args){
+        
+        Decimal amount = 100; 
+        String fromCurrency = 'USD'; 
+        String toCurrency = 'EUR'; 
+       
+        Decimal convertedAmount = convertCurrency(amount, fromCurrency, toCurrency);
+        if (convertedAmount != null) {
+            System.debug('Converted amount: ' + convertedAmount + ' ' + toCurrency);
+        }
+    }
+}
