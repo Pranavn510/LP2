@@ -1,0 +1,17 @@
+public class Bill_temp {
+	public static Decimal calculateElectricityBill(Integer unitsConsumed, Decimal ratePerUnit)
+    {
+        return unitsConsumed*ratePerUnit;
+    }
+    
+    public static Decimal convertCelsiusToFahrenheit(Decimal celsiusTemp)
+    {
+        return (celsiusTemp*(9/5))+32;
+    }
+    
+    public static void main()
+    {
+        System.debug('Bill is: '+calculateElectricityBill(400,10));
+        System.debug('Fahrenheit is: '+convertCelsiusToFahrenheit(20));
+    }
+}
