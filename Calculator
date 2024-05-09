@@ -1,0 +1,42 @@
+public class Calculator_f{
+
+    public static Integer add(Integer a, Integer b) {
+        return a + b;
+    }
+
+    public static Integer sub(Integer a, Integer b) {
+        return a - b;
+    }
+
+    public static Integer mul(Integer a, Integer b) {
+        return a * b;
+    }
+
+    public static Double div(Integer a, Integer b) {
+        return (Double)a / b;
+    }
+    public static Double power(Integer base, Integer exponent) {
+        return Math.pow(base, exponent);
+    }
+
+    public static Double squareRoot(Integer a) {
+        return Math.sqrt(a);
+    }
+
+    public static Integer modulo(Integer a, Integer b) {
+        return Math.mod(a,b);
+    }
+
+    public static void main(String[] args) {
+        Integer a = 10;
+        Integer b = 20;
+
+        System.debug('Addition is: ' + add(a, b));
+        System.debug('Subtraction is: ' + sub(a, b));
+        System.debug('Multiplication is: ' + mul(a, b));
+        System.debug('Division is: ' + div(a, b));
+        System.debug('Power is: ' + power(a, b));
+        System.debug('Square Root of ' + a + ' is: ' + squareRoot(a));
+        System.debug('Modulo is: ' + modulo(a, b));
+    }
+}
